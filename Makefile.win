@@ -1,0 +1,37 @@
+# Project: Project9
+# Makefile created by Dev-C++ 5.7.1
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = virtual-cric-app.o player.o team.o game.o
+LINKOBJ  = virtual-cric-app.o player.o team.o game.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW32/mingw32/lib" -static-libstdc++ -static-libgcc -pg -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.8.1/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.8.1/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW32/lib/gcc/mingw32/4.8.1/include/c++"
+BIN      = "game app.exe"
+CXXFLAGS = $(CXXINCS) -pg -g3
+CFLAGS   = $(INCS) -pg -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+virtual-cric-app.o: virtual-cric-app.cpp
+	$(CPP) -c virtual-cric-app.cpp -o virtual-cric-app.o $(CXXFLAGS)
+
+player.o: player.cpp
+	$(CPP) -c player.cpp -o player.o $(CXXFLAGS)
+
+team.o: team.cpp
+	$(CPP) -c team.cpp -o team.o $(CXXFLAGS)
+
+game.o: game.cpp
+	$(CPP) -c game.cpp -o game.o $(CXXFLAGS)
